@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
 
 import csv
+import os.path
 
-FILENAME = "movies.csv"
+FILENAME = "movies2.csv"
+
+# -------------Program works only if file already exists----------------
 
 
 def display_movies():
+ #   if not os.path.exists(FILENAME):
+ #       print(f"No movies are in '{FILENAME}' yet.")
     try:
         with open(FILENAME, "r", newline="") as file:
             reader = csv.reader(file)
@@ -46,6 +51,9 @@ def add_movie(movies):
 
 
 def delete_movie(movies):
+#    if not os.path.exists(FILENAME):
+#        print(f"No movies are in '{FILENAME}' yet.")
+#    else:
     length_counter = 0
     movie = input("Enter name of movie to delete: ")
     for m in movies:
@@ -56,15 +64,15 @@ def delete_movie(movies):
             break
         else:
             length_counter += 1
-    if length_counter == len(movies):
-        print("Movie not found.")
+            if length_counter == len(movies):
+                print("Movie not found.")
 
 
 def display_menu():
     print("-----The Movie List Program-----")
     print("view - View the movie list")
     print("add  - Add to the movie list")
-    print("del - Delete a movie from the list")
+    print("del  - Delete a movie from the list")
     print("exit - Exit the program")
     print("--------------------------------")
 
