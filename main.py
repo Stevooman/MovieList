@@ -3,7 +3,7 @@
 import csv
 import os.path
 
-FILENAME = "movies2.csv"
+FILENAME = "movies.csv"
 
 # -------------Program works only if file already exists----------------
 
@@ -35,6 +35,8 @@ def read_movies():
             for row in reader:
                 movies.append(row)
             return movies
+    except FileNotFoundError as e:
+        return movies
     except OSError:
         print(f"File '{FILENAME}' doesn't exist yet.")
 
